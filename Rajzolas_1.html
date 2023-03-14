@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">    
+    <title>Gépészeti Technikum</title>
+    <style>#canvas {border: 1px solid rgb(240, 8,  104);
+                       background: #FFFF99;}
+    </style>
+</head>
+<body>
+<canvas id = "canvas" width="640" height="480"></canvas>
+<script type = "text/javascript">
+    ctx = canvas.getContext("2d");
+let x, y;            //a kör középpontja
+let ballR = 40;      // kör sugara
+let dx = 1;    // mozgatás  x irányban
+let dy = 1;    // // mozgatás  x irányban
+x =   320; //canvas.width /2;
+y =    100; //canvas.height /2;
+
+
+
+
+setInterval( function()
+
+                {   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    ctx.beginPath();  // el kezdünk rajzolni
+                    ctx.arc(x, y, ballR, 0 * Math.PI, 2 * Math.PI);
+                    ctx.strokeStyle = "red";
+                    ctx.stroke();
+                    ctx.closePath();  //befejezzük a rajzolást
+                    
+                   
+                     if((x + dx > canvas.width - ballR) || ( x + dx < ballR    ))   { dx = - dx;}
+                     if((y + dy > canvas.height - ballR) || ( y + dy < ballR    ))   { dy = - dy;}
+                    x = x + dx; // ettől mozog vízszintesen
+                    y = y + dy; // ettől mozog függőlegesen
+
+                    
+                
+                },         
+           10);
+    
+</script>  
+</body>
+</html>
